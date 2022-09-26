@@ -6,10 +6,15 @@ const {remove_undef} = require("./utils");
 //     sslCert: credentials,
 //     serverApi: ServerApiVersion.v1
 // });
-const client = new MongoClient('mongodb://root:example@db:27017/')
-const connection = client.connect()
+let client, connection, collection;
+if(!process.env.TESTING) [client, connection, collection] = setup()
 
-const collection = client.db("otot-b").collection("memes");
+function setup() {
+    const client = new MongoClient('mongodb://root:example@db:27017/')
+    const connection = client.connect()
+    const collection = client.db("otot-b").collection("memes");
+    return [client, connection, collection]
+}
 
 function get_obj_id(id) {
     try {

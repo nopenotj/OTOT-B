@@ -106,7 +106,7 @@ describe('Meme Endpoint', function () {
                     "description": "updated desc"
                 })
                 .end(function(err, res) {
-                    assert.deepEqual(res.body,update_response(0))
+                    assert.deepEqual(res.body,update_response(1))
                     if (err) throw err;
                 });
         });

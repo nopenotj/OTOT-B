@@ -1,5 +1,6 @@
-const {MongoClient, ServerApiVersion, ObjectId} = require('mongodb');
+const {MongoClient, ObjectId} = require('mongodb');
 const {remove_undef} = require("./utils");
+
 let client, connection, collection;
 if(!process.env.TESTING) [client, connection, collection] = setup()
 

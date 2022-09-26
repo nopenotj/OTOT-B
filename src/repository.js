@@ -1,11 +1,5 @@
 const {MongoClient, ServerApiVersion, ObjectId} = require('mongodb');
 const {remove_undef} = require("./utils");
-// const credentials = 'X509-cert-4306186246094741509.pem'
-// const client = new MongoClient('mongodb+srv://cs3219.snhnixj.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority', {
-//     sslKey: credentials,
-//     sslCert: credentials,
-//     serverApi: ServerApiVersion.v1
-// });
 let client, connection, collection;
 if(!process.env.TESTING) [client, connection, collection] = setup()
 

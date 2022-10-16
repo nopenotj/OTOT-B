@@ -1,11 +1,13 @@
 const {MongoClient, ObjectId} = require('mongodb');
 const {remove_undef} = require("./utils");
 
+const MONGODB = process.env.MONGO || 'mongodb://root:example@db:27017/'
+
 let client, connection, collection;
 if(!process.env.TESTING) [client, connection, collection] = setup()
 
 function setup() {
-    const client = new MongoClient('mongodb://root:example@db:27017/')
+    const client = new MongoClient(MONGODB)
     const connection = client.connect()
     const collection = client.db("otot-b").collection("memes");
     return [client, connection, collection]

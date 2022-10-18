@@ -1,1 +1,4 @@
 runtime: nodejs16
+env_variables:
+        MONGO_USER: "jay1"
+        MONGO_PASSWORD: "rb2YtVoIJt4qcJNm"

@@ -1,7 +1,10 @@
 const {MongoClient, ObjectId} = require('mongodb');
 const {remove_undef} = require("./utils");
 
-const MONGODB = process.env.MONGO || 'mongodb://root:example@db:27017/'
+const USER = process.env.MONGO_USER
+const PASSWORD = process.env.MONGO_PASSWORD
+const MONGODB = `mongodb+srv://${USER}:${PASSWORD}@cs3219.snhnixj.mongodb.net/?retryWrites=true&w=majority`
+
 
 let client, connection, collection;
 if(!process.env.TESTING) [client, connection, collection] = setup()

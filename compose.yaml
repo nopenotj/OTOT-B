@@ -7,6 +7,8 @@ services:
       - "9229:9229"
     volumes:
       - "./src:/usr/src/app/src"
+    environment:
+      ENV: local
   db:
     image: mongo
     restart: always

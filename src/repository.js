@@ -3,7 +3,9 @@ const {remove_undef} = require("./utils");
 
 const USER = process.env.MONGO_USER
 const PASSWORD = process.env.MONGO_PASSWORD
-const MONGODB = `mongodb+srv://${USER}:${PASSWORD}@cs3219.snhnixj.mongodb.net/?retryWrites=true&w=majority`
+const MONGODB = process.env.ENV == 'local' ?
+    "mongodb://root:example@db:27017/"
+    :`mongodb+srv://${USER}:${PASSWORD}@cs3219.snhnixj.mongodb.net/?retryWrites=true&w=majority`
 
 
 let client, connection, collection;

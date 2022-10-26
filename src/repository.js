@@ -7,7 +7,7 @@ const MONGODB = process.env.ENV == 'local' ?
     "mongodb://root:example@db:27017/"
     :`mongodb+srv://${USER}:${PASSWORD}@cs3219.snhnixj.mongodb.net/?retryWrites=true&w=majority`
 
-
+console.log('Using mongo user', USER)
 let client, connection, collection;
 if(!process.env.TESTING) [client, connection, collection] = setup()
 

@@ -67,7 +67,7 @@ function change_vote(id, val) {
         return collection.updateOne(
             {_id: get_obj_id(id)},
             {
-                $inc: {vote: val},
+                $inc: {votes: val},
                 $currentDate: {last_modified: true}
             }
         );
@@ -92,6 +92,13 @@ function delete_all() {
     return connection.then(() => {
         return collection.deleteMany({});
     })
+}
+
+// Seed some local data if deploying locally
+if (process.env.ENV == 'local') {
+	create({description:"cat", link:"https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?fit=476%2C280&ssl=1"})
+	create({description:"patrick", link:"https://media0.giphy.com/media/LXHJRRjnviw7e/giphy.gif"})
+	create({description:"simpsons", link:"https://compote.slate.com/images/697b023b-64a5-49a0-8059-27b963453fb1.gif"})
 }
 
 module.exports = {

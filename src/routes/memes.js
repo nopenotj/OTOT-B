@@ -21,6 +21,7 @@ const linkdesc_err = {"err": "Invalid link/description"}
 // CREATE
 router.post('/', (req, res) => {
     const {link, description} = req.body
+    console.log(req.body)
     if (is_valid_link(link) && is_valid_desc(description)) return meme_repo.create({link, description}).then((x) => res.send(x))
     return res.status(400).send(linkdesc_err);
 });

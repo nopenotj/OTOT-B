@@ -37,7 +37,7 @@ repo.delete_all = () => new Promise((res,_) => res(delete_response(2)))
 repo.delete_item = (id) => new Promise((res,_) => res(delete_response(sample_memes.filter(i=> i.id == id).length)))
 
 post_sucess = {"acknowledged": true, "insertedId": "678"}
-not_found_err = {"err": "MemeId not found"}
+id_not_found_err = {"err": "MemeId not found"}
 invalid_post_err = {"err": 'Invalid link/description'}
 update_response = (mc) => ({"matchedCount": mc})
 delete_response = (no) => ({"acknowledged": true, "deletedCount": no})
@@ -66,7 +66,7 @@ describe('Meme Endpoint', function () {
             request(app)
                 .get('/124')
                 .end(function(err, res) {
-                    assert.deepEqual(res.body,not_found_err)
+                    assert.deepEqual(res.body,id_not_found_err)
                     if (err) throw err;
                 });
         });
@@ -88,7 +88,6 @@ describe('Meme Endpoint', function () {
             request(app)
                 .post('/')
                 .send({
-                    "link" : "https://invalid.com",
                     "description": "second meme"
                 })
                 .end(function(err, res) {
@@ -112,13 +111,13 @@ describe('Meme Endpoint', function () {
         });
         it('should return err if memeid is invalid', function () {
             request(app)
-                .put('/456')
+                .put('/458')
                 .send({
-                    "link" : "https://invalid.com",
-                    "description": "second meme"
+                    "link" : "https://updated.jpg",
+                    "description": "updated desc"
                 })
                 .end(function(err, res) {
-                    assert.deepEqual(res.body,invalid_post_err)
+                    assert.deepEqual(res.body, id_not_found_err)
                     if (err) throw err;
                 });
         });

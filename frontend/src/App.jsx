@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 const HOST = 'https://cs3219-363207.as.r.appspot.com/'
-const MEME_BACKEND = `http://${HOST}/memes/`
+const MEME_BACKEND = `${HOST}/memes/`
 import { useDisclosure, Modal,ModalOverlay,ModalContent,ModalHeader,ModalCloseButton,ModalBody, Center, ModalFooter, Image, VStack, Text, Box, Heading, Link, Button, Input, HStack, Flex, Spacer, Badge } from '@chakra-ui/react'
 import { DeleteIcon, TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons'
 
